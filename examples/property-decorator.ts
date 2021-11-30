@@ -55,14 +55,17 @@ function format(formatString: string) {
 
 
 class Greeter {
-  @format("Hello, %s")
+  @format(`Hello, %s`)
   greeting: string;
 
   @format("Title : %s")
   title: string='title';
 
-  constructor(message: string) {
+  formatTxt:string;
+
+  constructor(message: string, formatTxt:string) {
     this.greeting = message;
+    this.formatTxt=formatTxt;
   }
 
 
@@ -76,7 +79,7 @@ class Greeter {
   }
 }
 
-const a = new Greeter('gret1');
+const a = new Greeter('gret1','ff');
 console.log(a.greet());
-const a1 = new Greeter('gret2');
+const a1 = new Greeter('gret2','aa');
 console.log(a1.greet());
