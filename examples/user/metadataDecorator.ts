@@ -1,4 +1,4 @@
-import { log } from "./colorConsole";
+import { log } from "../colorConsole";
 
 export const PROPERTY_METADATA_KEY = Symbol("propMeta");
 

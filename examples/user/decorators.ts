@@ -1,6 +1,7 @@
 import {User} from "./User";
-import {log} from "./colorConsole"
+import {log} from "../colorConsole";
 
+// declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
 function classDecorator(...args: any): ClassDecorator {
   return function <TFunction extends Function>(
     target: TFunction
@@ -39,14 +40,14 @@ function parameterDecorator(...args: any): ParameterDecorator {
 }
 
 export function logData(message: string): ClassDecorator {
-  console.log(`[Class 🟢] Message is: ${message}`);
+  log.green(`[ClassDecorator logData] Message is: ${message}`);
   return function (target: any): void {
     console.log('[Class 🟢] constructor');
   };
 }
 
 export function addProperty<T>(name: string, value: T): ClassDecorator {
-  console.log(`[Class 🟩] Add property`);
+  log.green(`[ClassDecorator addProperty] Add property`);
   return function (target: any): void {
     target.prototype[name] = value;
     const instance = new target() as User;
@@ -69,9 +70,9 @@ export function addProperty<T>(name: string, value: T): ClassDecorator {
 // Type 'TypedPropertyDescriptor&lt;T&gt;' is not assignable to type 'TypedPropertyDescriptor&lt;number&gt;'.<br/>Types of property 'value' are incompatible.<br/>Type 'T | undefined' is not assignable to type 'number | undefined'.<br/>Type 'T' is not assignable to type 'number | undefined'.<br/>Type 'T' is not assignable to type 'number'.
 
 export function logMethod(message: string): MethodDecorator {
-  console.log(`[Method 🟠] Message is: ${message}`)
+  console.log(`[Method 🟠] Message is: ${message}`);
   return function (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> {
-    log.yellow('LOG METHOD')
+    log.yellow('LOG METHOD');
     console.log(`->->- logMethod ${String(propertyKey)}`);
     const ret: TypedPropertyDescriptor<number> = {
       enumerable: true,

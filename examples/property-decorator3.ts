@@ -1,4 +1,5 @@
 function logProperty(target: any, key: string) {
+  console.log('Init logProperty');
 
   // property value
   let _val = target[key];
@@ -75,6 +76,10 @@ class Person {
     this.name = name;
     this.surname = surname;
   }
+
+  printNothing() {
+    console.log('aa');
+  }
 }
 
 console.log('var p = new Person("remo", "Jansen")');
@@ -85,3 +90,6 @@ console.log('var n = p.name;');
 var n = p.name;
 console.log('surname=');
 p.surname = 'Вася';
+
+console.log('********** REMO3');
+ p = new Person("remo3", "Jansen");
