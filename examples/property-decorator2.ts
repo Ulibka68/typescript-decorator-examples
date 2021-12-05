@@ -1,7 +1,10 @@
 // declare type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void;
+import {log, bgColor, fgColor} from "./colorConsole";
 
 function Min(limit: number) {
+  log(fgColor.red,bgColor.white_default,'min',limit);
   return function (target: Object, propertyKey: string) {
+    log(fgColor.green,bgColor.white_default,'call min',limit);
     let value: string = '----';
 
     const getter = function () {
@@ -19,7 +22,7 @@ function Min(limit: number) {
             value: [`Your ${propertyKey} should be bigger than ${limit} - ${newVal}`],
             writable: true
           });
-        } else (target as any).errors.push( `Your ${propertyKey} should be bigger than ${limit} - ${newVal}`);
+        } else (target as any).errors.push(`Your ${propertyKey} should be bigger than ${limit} - ${newVal}`);
       } else {
         value = newVal;
       }
@@ -45,6 +48,8 @@ class User {
     Reflect.deleteProperty(this, 'password');
     this.password1 = password;
   }
+
+  sum(a:number) {return a++}
 }
 
 
