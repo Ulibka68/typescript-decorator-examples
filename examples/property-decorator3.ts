@@ -66,8 +66,9 @@ function logProperty2(NameLog: string): PropertyDecorator {
 
 
 class Person {
-  @logProperty
+  // @logProperty
   public name: string;
+  public typeClass = 'person class';
 
   @logProperty2('A22LOG')
   public surname: string;
@@ -92,4 +93,4 @@ console.log('surname=');
 p.surname = 'Вася';
 
 console.log('********** REMO3');
- p = new Person("remo3", "Jansen");
+p = new Person("remo3", "Jansen");
